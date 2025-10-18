@@ -1,0 +1,18 @@
+//Samuel Farreira da Silva Santos//
+import {NavigationContainer} from "@react-natigation/native";
+import { createNativeStackNavigator } from "@react-navigation/stack";
+import ListUsers from "./src copy/src 2/ListUsers"; 
+import UserForms from "./src copy/src 2/UserForms";
+const Stack = createNativeStackNavigator()
+  
+export default function PaginaStack(){
+    return(
+        <NavigationContainer>
+            <Stack.Navigatior initialRouteName='UserForms'>
+            <Stack.Screen name="UserForms" component={UserForms}/>
+            <Stack.Screen name="ListaUsers" component={ListUsers}/>
+            </Stack.Navigatior>
+        </NavigationContainer>
+
+    )
+}
