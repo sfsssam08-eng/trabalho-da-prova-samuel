@@ -1,0 +1,17 @@
+//Samuel Ferreira da Silva Santos//
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBjpuRERd9U1Lo9MPsbJH5UOhQR1XgqgdA",
+  authDomain: "provaapp-356b7.firebaseapp.com",
+  projectId: "provaapp-356b7",
+  storageBucket: "provaapp-356b7.firebasestorage.app",
+  messagingSenderId: "492981547071",
+  appId: "1:492981547071:web:1953a5c18e4803fdbb488a",
+  measurementId: "G-0JM4RB76JE"
+};
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+export default firebase;
