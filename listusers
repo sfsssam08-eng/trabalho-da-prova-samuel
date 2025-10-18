@@ -1,0 +1,119 @@
+//Samuel Ferreira da Silva Santos//
+import {StyleSheet,View,Text,Button,ScrollView} from "react-native";
+import {useState} from "react"
+import { useNavigation} from '@react-navigation/native';
+import {db} from "../components/firebaseConnections";
+import {deleteDoc,doc} from "firebase/firestore";
+
+import UserForms from"./src copy/src 2/ProvaAPP/UserForms";
+import components from ".src copy/src 2/ProvaAPP/components"
+
+export default function ListUsers({route,navigation}){
+    const Navigation = useNavigation();
+      const produto= route.params?.produto;
+  
+     async function deletarDocumento(id){
+            try{
+         await deleteDoc(doc(db,'UserForms',id));
+            alert("documento deletado com sucesso");
+            navigation.goBack();
+      }catch (error){console.error('erro ao deletar:',error);
+        alert('erro ao deletar o documento');
+      }}
+
+  return(
+      <ScrollView style={styles.container}>
+      <View style={styles.card}>
+        <Text style={styles.title}>{produto.Nome}</Text>
+        <Button
+          title="Editar texto"
+          color="green"
+          onPress={() => navigation.navigate('UserForms', { produtos})}
+        />
+      </View>
+
+ 
+     <View style={styles.card}>
+          <Text style={styles.title}>{produto.Letra}</Text>
+          <Button
+            title="Editar texto"
+            color="green"
+            onPress={() => navigation.navigate('UserForms', { produto })}
+          />
+        </View>
+     <View style={styles.card}>
+          <Text style={styles.title}>{produto.cep}</Text>
+          <Text style={styles.title}>{produto.Logradouro}</Text>
+          <Text style={styles.title}>{produto.Localidade}</Text>
+          <Text style={styles.title}>{produto.Resultado} </Text>
+          <Button
+            title="Editar texto"
+            color="green"
+            onPress={() => navigation.navigate('UserForms', { produto })}
+          />
+        </View>
+     <View style={styles.card}>
+          <Text style={styles.title}>{produto.Consoante}</Text>
+          </View>.
+        
+     <View style={styles.card}>
+          <Text style={styles.title}>{produto.Vogal}</Text>
+       
+        </View>
+    
+ <View style={styles.card}>
+          <Text style={styles.title}>{produto.Substantivo}</Text>
+        
+        </View>
+        <View style={styles.card}>
+          <Text style={styles.title}>{produto.Preposiçao}</Text>
+        
+        
+        </View>
+         <View style={styles.card}>
+          <Text style={styles.title}>{produto.Adjetivo}</Text>
+        
+        </View>
+         <View style={styles.card}>
+          <Text style={styles.title}>{produto.Conjuçao}</Text>
+         
+        
+         
+        </View>
+          <Button 
+            title="Editar texto"
+            color="green"
+            onPress={() => navigation.navigate('UserForms', { produto })}
+          />
+   <Button
+            title="Excluir texto"
+            color="red"
+            onPress={() => deletarDocumento(produto.id)}/>
+    
+    
+    </ScrollView>
+)}
+
+   
+ 
+const styles= StyleSheet.create({
+    container:{
+    flex:1,
+    background:'white',
+    alingintems:"center",
+    justifyconten:"center"
+},
+ card:{
+   color:'green',
+  fontize:25,
+  fontWeight:'bold',
+  textAling:'center',
+
+ },
+ title:{
+color:'black',
+  fontize:25,
+  fontWeight:'bold',
+  textAling:'center',
+ }
+});
