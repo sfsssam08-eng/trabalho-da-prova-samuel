@@ -1,0 +1,92 @@
+//Samuel Ferreira da Silva Santos//
+import {View,Text,StyleSheet,TextInput,TouchableOpacity,Alert} from 'react-native';
+import { useNavigation} from '@react-navigation/native';
+import{useState} from "react";
+
+export default function LoginScreen({Navigation}){
+     const Navigation=useNavigation();
+
+    const[email,setemail]=useState('');
+    const[senha,setsenha]=useState('');
+    
+    function peganome(letra){
+      setemail(letra);
+    };
+
+    function pegounome(numero){
+      setsenha(numero);
+    };
+
+    function validar(){
+      if (email.trim() ==='' || senha.trim() === ''){
+ Alert.alert('Erro',"Preencha todos os campos corretamente!");
+  return false;
+      }
+      return true;
+ };
+  const handlePress=()=>{
+    validar();
+    Navigation.navigate('UserForms');
+  };
+
+return(
+<View style={styles.container}>
+    <Text style={styles.nome}>SITE DE INFORMAÇÃO DO VIACEP </Text> 
+   
+    <TextInput style={styles.escrita} placeholder="digite seu e-mail" value={email} onChangeText={(letra) =>peganome(letra)}/>
+    <TextInput style={styles.escrita} placeholder='digite sua senha' value={senha} onChangeText={(numero) =>pegounome(numero)}/>
+    
+    <TouchableOpacity style={styles.botao} 
+    onPress={handlePress}>
+      <Text style={styles.pagina}>Entrar</Text>
+    </TouchableOpacity>
+  
+    <TouchableOpacity style={styles.botao}
+    onPress={()=> Navigation.navigate('ListUsers')}>
+        <Text style={styles.pagina}>Continuar sem login</Text>
+    </TouchableOpacity>
+</View>
+)};
+
+const styles= StyleSheet.create({
+    container:{
+        flex:1,
+        backgroundecolor:'black',
+        alignintens:'center',
+        justifycontent:'center',
+    },
+    nome:{
+      fontsize:40,
+      color:"purple",
+      fontweight:"bold",
+      textAling:'center',
+      marginvertical:'30',
+   },
+    escrita:{
+backgroundecolor:'gray',
+   height:23,
+   boderWight:1,
+   boderColor:'green',
+  color:'yellow',
+  fontSize:15,
+  paddingHorizontal:15,
+  marginVertical:10,
+  wight:'80%',
+  boderRadius:5,
+    },
+  
+    botao:{  
+     backgroundColor:"purple",
+     padding:10,
+     boderRadius:5,
+     marginVertical:10,
+     widht:"80%"
+    },
+     pagina:{
+        fontsize:27,
+      color:"black",
+      fontweight:"bold",
+      textAling:'center',
+      },
+
+})
