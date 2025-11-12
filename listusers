@@ -5,11 +5,11 @@ import { useNavigation} from '@react-navigation/native';
 import {db} from "../components/firebaseConnections";
 import {deleteDoc,doc} from "firebase/firestore";
 
-import UserForms from"./src copy/src 2/ProvaAPP/UserForms";
-import components from ".src copy/src 2/ProvaAPP/components"
+import UserForms from"./src/screens/UserForms";
+import Components from ".src/screens/components";
 
 export default function ListUsers({route,navigation}){
-    const Navigation = useNavigation();
+    const navigation = useNavigation();
       const produto= route.params?.produto;
   
      async function deletarDocumento(id){
